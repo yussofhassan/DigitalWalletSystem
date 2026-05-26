@@ -64,7 +64,10 @@ namespace welllet
 
                 cmd.Parameters.AddWithValue("@PhoneNumber", txtPhone.Text);
 
-                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                string hashedPassword =
+     HashHelper.HashPassword(txtPassword.Text);
+
+                cmd.Parameters.AddWithValue("@Password", hashedPassword);
 
                 SqlDataReader reader = cmd.ExecuteReader();
 

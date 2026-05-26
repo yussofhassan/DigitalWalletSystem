@@ -32,13 +32,16 @@
             lblBalance = new Label();
             lblWelcome = new Label();
             panelMenu = new Panel();
+            btnChangePassword = new Button();
             btnExit = new Button();
             btnLogout = new Button();
             btnTransactions = new Button();
             btnSendMoney = new Button();
             btnAddMoney = new Button();
+            pictureBox1 = new PictureBox();
             panelTop.SuspendLayout();
             panelMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelTop
@@ -76,17 +79,25 @@
             // 
             // panelMenu
             // 
-            panelMenu.BackColor = Color.Gainsboro;
-            panelMenu.Controls.Add(btnExit);
-            panelMenu.Controls.Add(btnLogout);
+            panelMenu.BackColor = Color.White;
+            panelMenu.Controls.Add(btnChangePassword);
             panelMenu.Controls.Add(btnTransactions);
             panelMenu.Controls.Add(btnSendMoney);
             panelMenu.Controls.Add(btnAddMoney);
-            panelMenu.Dock = DockStyle.Left;
-            panelMenu.Location = new Point(0, 100);
+            panelMenu.Location = new Point(0, 106);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(882, 353);
+            panelMenu.Size = new Size(602, 233);
             panelMenu.TabIndex = 1;
+            // 
+            // btnChangePassword
+            // 
+            btnChangePassword.Location = new Point(42, 135);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(260, 90);
+            btnChangePassword.TabIndex = 17;
+            btnChangePassword.Text = "Change Password";
+            btnChangePassword.UseVisualStyleBackColor = true;
+            btnChangePassword.Click += btnChangePassword_Click;
             // 
             // btnExit
             // 
@@ -94,7 +105,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(718, 286);
+            btnExit.Location = new Point(365, 355);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(152, 55);
             btnExit.TabIndex = 16;
@@ -104,17 +115,20 @@
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(154, 149);
+            btnLogout.BackColor = Color.Green;
+            btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Location = new Point(70, 355);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(260, 90);
+            btnLogout.Size = new Size(152, 55);
             btnLogout.TabIndex = 3;
             btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
             // 
             // btnTransactions
             // 
-            btnTransactions.Location = new Point(490, 149);
+            btnTransactions.Location = new Point(324, 135);
             btnTransactions.Name = "btnTransactions";
             btnTransactions.Size = new Size(260, 90);
             btnTransactions.TabIndex = 2;
@@ -124,7 +138,7 @@
             // 
             // btnSendMoney
             // 
-            btnSendMoney.Location = new Point(490, 21);
+            btnSendMoney.Location = new Point(324, 21);
             btnSendMoney.Name = "btnSendMoney";
             btnSendMoney.Size = new Size(260, 90);
             btnSendMoney.TabIndex = 1;
@@ -134,13 +148,26 @@
             // 
             // btnAddMoney
             // 
-            btnAddMoney.Location = new Point(154, 21);
+            btnAddMoney.Location = new Point(42, 21);
             btnAddMoney.Name = "btnAddMoney";
             btnAddMoney.Size = new Size(260, 90);
             btnAddMoney.TabIndex = 0;
             btnAddMoney.Text = "Add Money";
             btnAddMoney.UseVisualStyleBackColor = true;
             btnAddMoney.Click += btnAddMoney_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
+            pictureBox1.Image = Properties.Resources.logo_wallet;
+            pictureBox1.Location = new Point(577, 89);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(342, 306);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 26;
+            pictureBox1.TabStop = false;
             // 
             // DashboardForm
             // 
@@ -149,7 +176,10 @@
             BackColor = Color.White;
             ClientSize = new Size(882, 453);
             Controls.Add(panelMenu);
+            Controls.Add(btnLogout);
+            Controls.Add(btnExit);
             Controls.Add(panelTop);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "DashboardForm";
@@ -159,6 +189,7 @@
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
             panelMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -173,5 +204,7 @@
         private Button btnTransactions;
         private Button btnLogout;
         private Button btnExit;
+        private Button btnChangePassword;
+        private PictureBox pictureBox1;
     }
 }

@@ -36,7 +36,9 @@
             btnConfirm = new Button();
             btnExit = new Button();
             btnBack = new Button();
+            pictureBox1 = new PictureBox();
             panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelTop
@@ -130,6 +132,19 @@
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
+            pictureBox1.Image = Properties.Resources.logo_wallet;
+            pictureBox1.Location = new Point(560, 57);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(342, 306);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 26;
+            pictureBox1.TabStop = false;
+            // 
             // AddMoneyForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -142,6 +157,7 @@
             Controls.Add(txtAmount);
             Controls.Add(label1);
             Controls.Add(panelTop);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimizeBox = false;
             Name = "AddMoneyForm";
@@ -150,6 +166,7 @@
             Load += AddMoneyForm_Load;
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -164,5 +181,6 @@
         private Button btnConfirm;
         private Button btnExit;
         private Button btnBack;
+        private PictureBox pictureBox1;
     }
 }

@@ -44,6 +44,8 @@
             btnCreate = new Button();
             btnBack = new Button();
             btnExit = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // lblTitle
@@ -209,6 +211,19 @@
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
+            pictureBox1.Image = Properties.Resources.logo_wallet;
+            pictureBox1.Location = new Point(29, 314);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(236, 241);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 26;
+            pictureBox1.TabStop = false;
+            // 
             // RegisterForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -231,12 +246,14 @@
             Controls.Add(txtFullName);
             Controls.Add(label1);
             Controls.Add(lblTitle);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "RegisterForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Create Account";
             Load += RegisterForm_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -259,5 +276,6 @@
         private Button btnCreate;
         private Button btnBack;
         private Button btnExit;
+        private PictureBox pictureBox1;
     }
 }

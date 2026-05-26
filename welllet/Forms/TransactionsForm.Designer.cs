@@ -34,8 +34,10 @@
             dgvTransactions = new DataGridView();
             btnBack = new Button();
             btnExit = new Button();
+            pictureBox1 = new PictureBox();
             panelTop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelTop
@@ -77,7 +79,7 @@
             dgvTransactions.Location = new Point(0, 106);
             dgvTransactions.Name = "dgvTransactions";
             dgvTransactions.RowHeadersWidth = 51;
-            dgvTransactions.Size = new Size(882, 277);
+            dgvTransactions.Size = new Size(882, 247);
             dgvTransactions.TabIndex = 2;
             // 
             // btnBack
@@ -108,6 +110,19 @@
             btnExit.UseVisualStyleBackColor = false;
             btnExit.Click += btnExit_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
+            pictureBox1.Image = Properties.Resources.logo_wallet;
+            pictureBox1.Location = new Point(233, 199);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(342, 306);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 26;
+            pictureBox1.TabStop = false;
+            // 
             // TransactionsForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -118,6 +133,7 @@
             Controls.Add(btnExit);
             Controls.Add(dgvTransactions);
             Controls.Add(panelTop);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "TransactionsForm";
@@ -127,6 +143,7 @@
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvTransactions).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -138,5 +155,6 @@
         private DataGridView dgvTransactions;
         private Button btnBack;
         private Button btnExit;
+        private PictureBox pictureBox1;
     }
 }

@@ -106,7 +106,10 @@ namespace welllet.Forms
 
                 cmd.Parameters.AddWithValue("@PhoneNumber", txtPhone.Text);
 
-                cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
+                string hashedPassword =
+     HashHelper.HashPassword(txtPassword.Text);
+
+                cmd.Parameters.AddWithValue("@Password", hashedPassword);
 
                 cmd.Parameters.AddWithValue("@Balance", 0);
 

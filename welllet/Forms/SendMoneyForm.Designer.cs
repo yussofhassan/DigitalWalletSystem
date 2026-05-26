@@ -38,7 +38,9 @@
             label1 = new Label();
             txtAmount = new TextBox();
             label2 = new Label();
+            pictureBox1 = new PictureBox();
             panelTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panelTop
@@ -80,7 +82,7 @@
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(12, 373);
+            btnBack.Location = new Point(315, 252);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(129, 52);
             btnBack.TabIndex = 20;
@@ -94,7 +96,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(741, 373);
+            btnExit.Location = new Point(714, 252);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(129, 52);
             btnExit.TabIndex = 19;
@@ -106,7 +108,7 @@
             // 
             btnSend.BackColor = Color.DarkBlue;
             btnSend.ForeColor = Color.White;
-            btnSend.Location = new Point(315, 280);
+            btnSend.Location = new Point(458, 244);
             btnSend.Name = "btnSend";
             btnSend.Size = new Size(250, 60);
             btnSend.TabIndex = 23;
@@ -117,7 +119,7 @@
             // txtReceiver
             // 
             txtReceiver.Font = new Font("Segoe UI", 14F);
-            txtReceiver.Location = new Point(149, 184);
+            txtReceiver.Location = new Point(315, 184);
             txtReceiver.MaxLength = 11;
             txtReceiver.Name = "txtReceiver";
             txtReceiver.Size = new Size(250, 39);
@@ -127,7 +129,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F);
-            label1.Location = new Point(149, 149);
+            label1.Location = new Point(315, 149);
             label1.Name = "label1";
             label1.Size = new Size(245, 32);
             label1.TabIndex = 21;
@@ -136,7 +138,7 @@
             // txtAmount
             // 
             txtAmount.Font = new Font("Segoe UI", 14F);
-            txtAmount.Location = new Point(493, 184);
+            txtAmount.Location = new Point(612, 184);
             txtAmount.Name = "txtAmount";
             txtAmount.Size = new Size(250, 39);
             txtAmount.TabIndex = 25;
@@ -145,11 +147,24 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F);
-            label2.Location = new Point(493, 149);
+            label2.Location = new Point(612, 149);
             label2.Name = "label2";
             label2.Size = new Size(174, 32);
             label2.TabIndex = 24;
             label2.Text = "Enter Amount: ";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
+            pictureBox1.Image = Properties.Resources.logo_wallet;
+            pictureBox1.Location = new Point(12, 104);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(259, 263);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 26;
+            pictureBox1.TabStop = false;
             // 
             // SendMoneyForm
             // 
@@ -165,6 +180,7 @@
             Controls.Add(btnBack);
             Controls.Add(btnExit);
             Controls.Add(panelTop);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimizeBox = false;
             Name = "SendMoneyForm";
@@ -173,6 +189,7 @@
             Load += SendMoneyForm_Load;
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -189,5 +206,6 @@
         private Label label1;
         private TextBox txtAmount;
         private Label label2;
+        private PictureBox pictureBox1;
     }
 }

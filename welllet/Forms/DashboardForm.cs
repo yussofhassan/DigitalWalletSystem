@@ -86,5 +86,20 @@ namespace welllet.Forms
 
             this.Hide();
         }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm form = new ChangePasswordForm();
+
+            form.UserName = UserName;
+
+            form.Balance = Balance;
+
+            form.UserID = UserID;
+
+            form.Show();
+
+            this.Hide();
+        }
     }
 }
