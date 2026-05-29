@@ -6,31 +6,31 @@ A desktop wallet application built using C#, WinForms and SQL Server.
 
 ### Login Form
 
-![Login Form](wallet/Screenshots/LoginForm.png)
+![Login Form](wellet/Screenshots/LoginForm.png)
 
 ### Registration Form
 
-![Registration Form](wallet/Screenshots/RegistrationForm.png)
+![Registration Form](wellet/Screenshots/RegistrationForm.png)
 
 ### Dashboard
 
-![Dashboard](wallet/Screenshots/dashboard.png)
+![Dashboard](wellet/Screenshots/dashboard.png)
 
 ### Add Money
 
-![Add Money](Screenshots/AddForm.png)
+![Add Money](wellet/Screenshots/AddForm.png)
 
 ### Send Money
 
-![Send Money](wallet/Screenshots/SendingForm.png)
+![Send Money](wellet/Screenshots/SendingForm.png)
 
 ### Change Password
 
-![Change Password](wallet/Screenshots/ChangePasswordForm.png)
+![Change Password](wellet/Screenshots/ChangePasswordForm.png)
 
 ### Transactions
 
-![Transactions](wallet/Screenshots/transactions.png)
+![Transactions](wellet/Screenshots/transactions.png)
 
 ---
 
