@@ -6,15 +6,15 @@ A desktop wallet application built using C#, WinForms and SQL Server.
 
 ### Login Form
 
-![Login Form](Screenshots/LoginForm.png)
+![Login Form](wallet/Screenshots/LoginForm.png)
 
 ### Registration Form
 
-![Registration Form](Screenshots/RegistrationForm.png)
+![Registration Form](wallet/Screenshots/RegistrationForm.png)
 
 ### Dashboard
 
-![Dashboard](Screenshots/dashboard.png)
+![Dashboard](wallet/Screenshots/dashboard.png)
 
 ### Add Money
 
@@ -22,15 +22,15 @@ A desktop wallet application built using C#, WinForms and SQL Server.
 
 ### Send Money
 
-![Send Money](Screenshots/SendingForm.png)
+![Send Money](wallet/Screenshots/SendingForm.png)
 
 ### Change Password
 
-![Change Password](Screenshots/ChangePasswordForm.png)
+![Change Password](wallet/Screenshots/ChangePasswordForm.png)
 
 ### Transactions
 
-![Transactions](Screenshots/transactions.png)
+![Transactions](wallet/Screenshots/transactions.png)
 
 ---
 
