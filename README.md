@@ -1,32 +1,40 @@
 # Digital Wallet System
 
-A Digital Wallet System built using:
-
-- C#
-- WinForms
-- SQL Server
+A desktop wallet application built using C#, WinForms and SQL Server.
 
 ## Features
 
-- User Registration
-- Login System
-- Add Money
-- Send Money
-- Transaction History
+* User Registration
+* User Login
+* Password Hashing (SHA256)
+* Add Money
+* Send Money
+* Change Password
+* Transaction History
+* Input Validation
+* SQL Transactions (Commit / Rollback)
 
 ## Technologies Used
 
-- .NET WinForms
-- SQL Server
-- ADO.NET
+* C#
+* WinForms
+* SQL Server LocalDB
+* ADO.NET
+* Git & GitHub
 
-## How to Run
+## Database Setup
 
-1. Open SQL Server
-2. Run database.sql
-3. Open the solution in Visual Studio
-4. Run the project
+1. Open SQL Server LocalDB.
+2. Run the file `database.sql`.
+3. Start the application.
 
-## Team Members
+## Project Structure
 
-- Yussof Hassan
+* Forms
+* Classes
+* Database
+* Resources
+
+## Author
+
+Yussof Hassan
