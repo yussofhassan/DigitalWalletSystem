@@ -14,9 +14,7 @@ namespace welllet.Forms
 {
     public partial class ChangePasswordForm : Form
     {
-        public string UserName;
-        public decimal Balance;
-        public int UserID;
+      
         public ChangePasswordForm()
         {
             InitializeComponent();
@@ -26,15 +24,10 @@ namespace welllet.Forms
         {
             DashboardForm dashboard = new DashboardForm();
 
-            dashboard.UserName = UserName;
-
-            dashboard.Balance = Balance;
-
-            dashboard.UserID = UserID;
-
+           
             dashboard.Show();
 
-            this.Close();
+            this.Hide();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -44,42 +37,49 @@ namespace welllet.Forms
 
         private void ChangePasswordForm_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = "Welcome, " + UserName;
+            lblWelcome.Text = "Welcome, " + Session.UserName;
 
-            lblBalance.Text = "Balance: " + Balance + " EGP";
+            lblBalance.Text = "Balance: " + Session.Balance + " EGP";
         }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtCurrentPassword.Text.Trim() == "")
+                if (Validator.IsEmpty(txtCurrentPassword.Text))
                 {
                     MessageBox.Show("Enter current password");
                     return;
                 }
 
-                if (txtNewPassword.Text.Trim() == "")
+                if (Validator.IsEmpty(txtNewPassword.Text))
                 {
                     MessageBox.Show("Enter new password");
                     return;
                 }
 
-                if (txtConfirmPassword.Text.Trim() == "")
+                if (Validator.IsEmpty(txtConfirmPassword.Text))
                 {
                     MessageBox.Show("Confirm your new password");
                     return;
                 }
 
-                if (txtNewPassword.Text.Length < 6)
+                if (txtNewPassword.Text.Length < 4)
                 {
-                    MessageBox.Show("Password must be at least 6 characters");
+                    MessageBox.Show("Password must be at least 4 characters");
                     return;
                 }
 
                 if (txtNewPassword.Text != txtConfirmPassword.Text)
                 {
                     MessageBox.Show("Passwords do not match");
+                    return;
+                }
+                if (txtCurrentPassword.Text == txtNewPassword.Text)
+                {
+                    MessageBox.Show(
+                        "New password must be different from current password");
+
                     return;
                 }
 
@@ -89,7 +89,7 @@ namespace welllet.Forms
 
                 con.Open();
 
-                // التأكد من الباسورد الحالي
+             
                 string checkQuery =
                     @"SELECT * FROM Users
           WHERE UserID = @UserID
@@ -97,7 +97,7 @@ namespace welllet.Forms
 
                 SqlCommand checkCmd = new SqlCommand(checkQuery, con);
 
-                checkCmd.Parameters.AddWithValue("@UserID", UserID);
+                checkCmd.Parameters.AddWithValue("@UserID", Session.UserID);
 
                 string currentHashedPassword =
                     HashHelper.HashPassword(txtCurrentPassword.Text);
@@ -117,7 +117,7 @@ namespace welllet.Forms
 
                 reader.Close();
 
-                // تحديث الباسورد
+              
                 string updateQuery =
                     @"UPDATE Users
           SET Password = @NewPassword
@@ -132,7 +132,7 @@ namespace welllet.Forms
                 updateCmd.Parameters.AddWithValue("@NewPassword",
                     newHashedPassword);
 
-                updateCmd.Parameters.AddWithValue("@UserID", UserID);
+                updateCmd.Parameters.AddWithValue("@UserID", Session.UserID);
 
                 updateCmd.ExecuteNonQuery();
 

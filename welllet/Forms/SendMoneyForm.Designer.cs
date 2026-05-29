@@ -51,7 +51,7 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(882, 100);
+            panelTop.Size = new Size(982, 100);
             panelTop.TabIndex = 1;
             // 
             // lblBalance
@@ -82,7 +82,7 @@
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(315, 252);
+            btnBack.Location = new Point(343, 256);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(129, 52);
             btnBack.TabIndex = 20;
@@ -96,7 +96,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(714, 252);
+            btnExit.Location = new Point(742, 256);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(129, 52);
             btnExit.TabIndex = 19;
@@ -108,7 +108,7 @@
             // 
             btnSend.BackColor = Color.DarkBlue;
             btnSend.ForeColor = Color.White;
-            btnSend.Location = new Point(458, 244);
+            btnSend.Location = new Point(486, 248);
             btnSend.Name = "btnSend";
             btnSend.Size = new Size(250, 60);
             btnSend.TabIndex = 23;
@@ -119,17 +119,19 @@
             // txtReceiver
             // 
             txtReceiver.Font = new Font("Segoe UI", 14F);
-            txtReceiver.Location = new Point(315, 184);
+            txtReceiver.Location = new Point(343, 188);
             txtReceiver.MaxLength = 11;
             txtReceiver.Name = "txtReceiver";
             txtReceiver.Size = new Size(250, 39);
             txtReceiver.TabIndex = 22;
+            txtReceiver.TextChanged += txtReceiver_TextChanged;
+            txtReceiver.KeyPress += txtReceiver_KeyPress;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F);
-            label1.Location = new Point(315, 149);
+            label1.Location = new Point(343, 153);
             label1.Name = "label1";
             label1.Size = new Size(245, 32);
             label1.TabIndex = 21;
@@ -138,16 +140,17 @@
             // txtAmount
             // 
             txtAmount.Font = new Font("Segoe UI", 14F);
-            txtAmount.Location = new Point(612, 184);
+            txtAmount.Location = new Point(640, 188);
             txtAmount.Name = "txtAmount";
             txtAmount.Size = new Size(250, 39);
             txtAmount.TabIndex = 25;
+            txtAmount.KeyPress += txtAmount_KeyPress;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F);
-            label2.Location = new Point(612, 149);
+            label2.Location = new Point(640, 153);
             label2.Name = "label2";
             label2.Size = new Size(174, 32);
             label2.TabIndex = 24;
@@ -171,7 +174,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(882, 453);
+            ClientSize = new Size(982, 453);
             Controls.Add(txtAmount);
             Controls.Add(label2);
             Controls.Add(btnSend);

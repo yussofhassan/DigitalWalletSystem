@@ -13,9 +13,7 @@ namespace welllet.Forms
     public partial class DashboardForm : Form
     {
 
-        public string UserName;
-        public decimal Balance;
-        public int UserID;
+      
         public DashboardForm()
         {
             InitializeComponent();
@@ -23,20 +21,16 @@ namespace welllet.Forms
 
         private void DashboardForm_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = "Welcome, " + UserName;
+            lblWelcome.Text = "Welcome, " + Session.UserName;
 
-            lblBalance.Text = "Balance: " + Balance + " EGP";
+            lblBalance.Text = "Balance: " + Session.Balance + " EGP";
         }
 
         private void btnAddMoney_Click(object sender, EventArgs e)
         {
             AddMoneyForm addForm = new AddMoneyForm();
 
-            addForm.UserName = UserName;
-
-            addForm.Balance = Balance;
-
-            addForm.UserID = UserID;
+           
 
             addForm.Show();
 
@@ -52,11 +46,7 @@ namespace welllet.Forms
         {
             SendMoneyForm sendForm = new SendMoneyForm();
 
-            sendForm.UserName = UserName;
-
-            sendForm.Balance = Balance;
-
-            sendForm.UserID = UserID;
+            
 
             sendForm.Show();
 
@@ -65,9 +55,15 @@ namespace welllet.Forms
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            LoginForm Login = new LoginForm();
+            Session.UserID = 0;
 
-            Login.Show();
+            Session.UserName = "";
+
+            Session.Balance = 0;
+
+            LoginForm login = new LoginForm();
+
+            login.Show();
 
             this.Close();
         }
@@ -76,12 +72,7 @@ namespace welllet.Forms
         {
             TransactionsForm form = new TransactionsForm();
 
-            form.UserName = UserName;
-
-            form.Balance = Balance;
-
-            form.UserID = UserID;
-
+           
             form.Show();
 
             this.Hide();
@@ -91,11 +82,7 @@ namespace welllet.Forms
         {
             ChangePasswordForm form = new ChangePasswordForm();
 
-            form.UserName = UserName;
-
-            form.Balance = Balance;
-
-            form.UserID = UserID;
+           
 
             form.Show();
 

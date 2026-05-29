@@ -33,11 +33,11 @@
             lblWelcome = new Label();
             panelMenu = new Panel();
             btnChangePassword = new Button();
-            btnExit = new Button();
-            btnLogout = new Button();
             btnTransactions = new Button();
             btnSendMoney = new Button();
             btnAddMoney = new Button();
+            btnExit = new Button();
+            btnLogout = new Button();
             pictureBox1 = new PictureBox();
             panelTop.SuspendLayout();
             panelMenu.SuspendLayout();
@@ -52,7 +52,7 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(882, 100);
+            panelTop.Size = new Size(982, 100);
             panelTop.TabIndex = 0;
             // 
             // lblBalance
@@ -60,7 +60,7 @@
             lblBalance.AutoSize = true;
             lblBalance.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblBalance.ForeColor = Color.White;
-            lblBalance.Location = new Point(566, 33);
+            lblBalance.Location = new Point(592, 33);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(210, 38);
             lblBalance.TabIndex = 1;
@@ -99,33 +99,6 @@
             btnChangePassword.UseVisualStyleBackColor = true;
             btnChangePassword.Click += btnChangePassword_Click;
             // 
-            // btnExit
-            // 
-            btnExit.BackColor = Color.Red;
-            btnExit.FlatStyle = FlatStyle.Flat;
-            btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(365, 355);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(152, 55);
-            btnExit.TabIndex = 16;
-            btnExit.Text = "Exit";
-            btnExit.UseVisualStyleBackColor = false;
-            btnExit.Click += btnExit_Click;
-            // 
-            // btnLogout
-            // 
-            btnLogout.BackColor = Color.Green;
-            btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLogout.ForeColor = Color.White;
-            btnLogout.Location = new Point(70, 355);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(152, 55);
-            btnLogout.TabIndex = 3;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = false;
-            btnLogout.Click += btnLogout_Click;
-            // 
             // btnTransactions
             // 
             btnTransactions.Location = new Point(324, 135);
@@ -156,6 +129,33 @@
             btnAddMoney.UseVisualStyleBackColor = true;
             btnAddMoney.Click += btnAddMoney_Click;
             // 
+            // btnExit
+            // 
+            btnExit.BackColor = Color.Red;
+            btnExit.FlatStyle = FlatStyle.Flat;
+            btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExit.ForeColor = Color.White;
+            btnExit.Location = new Point(365, 355);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(152, 55);
+            btnExit.TabIndex = 16;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.Green;
+            btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogout.ForeColor = Color.White;
+            btnLogout.Location = new Point(70, 355);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(152, 55);
+            btnLogout.TabIndex = 3;
+            btnLogout.Text = "Logout";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.White;
@@ -164,7 +164,7 @@
             pictureBox1.Image = Properties.Resources.logo_wallet;
             pictureBox1.Location = new Point(577, 89);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(342, 306);
+            pictureBox1.Size = new Size(402, 352);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 26;
             pictureBox1.TabStop = false;
@@ -174,7 +174,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(882, 453);
+            ClientSize = new Size(982, 453);
             Controls.Add(panelMenu);
             Controls.Add(btnLogout);
             Controls.Add(btnExit);

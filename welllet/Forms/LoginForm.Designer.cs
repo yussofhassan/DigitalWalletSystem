@@ -45,7 +45,7 @@
             // 
             lblTitle.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = Color.DarkBlue;
-            lblTitle.Location = new Point(240, 40);
+            lblTitle.Location = new Point(323, 84);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(400, 50);
             lblTitle.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(220, 157);
+            label1.Location = new Point(220, 221);
             label1.Name = "label1";
             label1.Size = new Size(144, 28);
             label1.TabIndex = 1;
@@ -65,17 +65,18 @@
             // txtPhone
             // 
             txtPhone.Font = new Font("Segoe UI", 12F);
-            txtPhone.Location = new Point(399, 154);
+            txtPhone.Location = new Point(399, 218);
             txtPhone.MaxLength = 11;
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(250, 34);
             txtPhone.TabIndex = 2;
+            txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(271, 224);
+            label2.Location = new Point(271, 264);
             label2.Name = "label2";
             label2.Size = new Size(93, 28);
             label2.TabIndex = 3;
@@ -84,7 +85,7 @@
             // txtPassword
             // 
             txtPassword.Font = new Font("Segoe UI", 12F);
-            txtPassword.Location = new Point(399, 218);
+            txtPassword.Location = new Point(399, 258);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(250, 34);
             txtPassword.TabIndex = 4;
@@ -93,7 +94,7 @@
             // chkShowPassword
             // 
             chkShowPassword.AutoSize = true;
-            chkShowPassword.Location = new Point(665, 228);
+            chkShowPassword.Location = new Point(665, 268);
             chkShowPassword.Name = "chkShowPassword";
             chkShowPassword.Size = new Size(132, 24);
             chkShowPassword.TabIndex = 5;
@@ -107,7 +108,7 @@
             btnLogin.FlatStyle = FlatStyle.Flat;
             btnLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
-            btnLogin.Location = new Point(314, 291);
+            btnLogin.Location = new Point(399, 306);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(250, 40);
             btnLogin.TabIndex = 6;
@@ -118,7 +119,7 @@
             // btnRegister
             // 
             btnRegister.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRegister.Location = new Point(314, 346);
+            btnRegister.Location = new Point(399, 352);
             btnRegister.Name = "btnRegister";
             btnRegister.Size = new Size(250, 35);
             btnRegister.TabIndex = 7;
@@ -132,7 +133,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(773, 404);
+            btnExit.Location = new Point(473, 393);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(97, 37);
             btnExit.TabIndex = 8;
@@ -146,9 +147,9 @@
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
             pictureBox1.Image = Properties.Resources.logo_wallet;
-            pictureBox1.Location = new Point(-34, 157);
+            pictureBox1.Location = new Point(-4, -19);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(342, 306);
+            pictureBox1.Size = new Size(321, 271);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 26;
             pictureBox1.TabStop = false;
@@ -158,7 +159,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(882, 453);
+            ClientSize = new Size(982, 453);
             Controls.Add(btnExit);
             Controls.Add(btnRegister);
             Controls.Add(btnLogin);
@@ -175,6 +176,7 @@
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Digital Wallet Login";
+            Load += LoginForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -20,8 +20,9 @@ namespace welllet.Forms
 
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-
+            dtBirthDate.MaxDate = DateTime.Today.AddYears(-10);
         }
+        
 
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -31,43 +32,37 @@ namespace welllet.Forms
 
         private void btnCreate_Click_1(object sender, EventArgs e)
         {
-            if (txtFullName.Text.Trim() == "")
+            if (Validator.IsEmpty(txtFullName.Text))
             {
                 MessageBox.Show("Please enter full name");
                 return;
             }
 
-            if (txtPhone.Text.Trim() == "")
+            if (Validator.IsEmpty(txtPhone.Text))
             {
                 MessageBox.Show("Please enter phone number");
                 return;
             }
 
-            if (txtPhone.Text.Length != 11)
-            {
-                MessageBox.Show("Phone number must be 11 digits");
-                return;
-            }
-
-            if (!txtPhone.Text.StartsWith("01"))
+            if (!Validator.IsValidPhone(txtPhone.Text))
             {
                 MessageBox.Show("Invalid Egyptian phone number");
                 return;
             }
 
-            if (txtPassword.Text.Trim() == "")
+            if (Validator.IsEmpty(txtPassword.Text))
             {
                 MessageBox.Show("Please enter password");
                 return;
             }
 
-            if (txtPassword.Text.Length < 6)
+            if (txtPassword.Text.Length < 4)
             {
-                MessageBox.Show("Password must be at least 6 characters");
+                MessageBox.Show("Password must be at least 4 characters");
                 return;
             }
 
-            if (txtConfirmPassword.Text.Trim() == "")
+            if (Validator.IsEmpty(txtConfirmPassword.Text))
             {
                 MessageBox.Show("Please confirm password");
                 return;
@@ -85,6 +80,12 @@ namespace welllet.Forms
                 return;
             }
 
+            if (dtBirthDate.Value > DateTime.Today.AddYears(-10))
+            {
+                MessageBox.Show("Age must be at least 10 years");
+                return;
+            }
+
             try
             {
                 DatabaseManager db = new DatabaseManager();
@@ -93,7 +94,32 @@ namespace welllet.Forms
 
                 con.Open();
 
+                string checkPhoneQuery =
+    @"SELECT COUNT(*)
+      FROM Users
+      WHERE PhoneNumber = @PhoneNumber";
+
+                SqlCommand checkCmd =
+                    new SqlCommand(checkPhoneQuery, con);
+
+                checkCmd.Parameters.AddWithValue(
+                    "@PhoneNumber",
+                    txtPhone.Text);
+
+                int count =
+                    Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    MessageBox.Show(
+                        "Phone number already exists");
+
+                    con.Close();
+
+                    return;
+                }
                 string query =
+
                     @"INSERT INTO Users
         (FullName, PhoneNumber, Password, Balance, Gender, BirthDate)
 
@@ -122,6 +148,16 @@ namespace welllet.Forms
                 con.Close();
 
                 MessageBox.Show("Account Created Successfully");
+                txtFullName.Clear();
+
+                txtPhone.Clear();
+
+                txtPassword.Clear();
+
+                txtConfirmPassword.Clear();
+
+                cmbGender.SelectedIndex = -1;
+
                 LoginForm Login = new LoginForm();
 
                 Login.Show();
@@ -140,7 +176,26 @@ namespace welllet.Forms
 
             Login.Show();
 
-            this.Hide();
+            this.Close();
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+        !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtFullName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+       !char.IsLetter(e.KeyChar) &&
+       e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
         }
     }
 }

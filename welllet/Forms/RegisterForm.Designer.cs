@@ -52,9 +52,9 @@
             // 
             lblTitle.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = Color.DarkBlue;
-            lblTitle.Location = new Point(220, 40);
+            lblTitle.Location = new Point(277, 66);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(450, 50);
+            lblTitle.Size = new Size(450, 84);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Create New Wallet";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
@@ -63,7 +63,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(108, 125);
+            label1.Location = new Point(116, 209);
             label1.Name = "label1";
             label1.Size = new Size(100, 28);
             label1.TabIndex = 1;
@@ -72,16 +72,17 @@
             // txtFullName
             // 
             txtFullName.Font = new Font("Segoe UI", 12F);
-            txtFullName.Location = new Point(220, 125);
+            txtFullName.Location = new Point(236, 203);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(344, 34);
             txtFullName.TabIndex = 2;
+            txtFullName.KeyPress += txtFullName_KeyPress;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(108, 196);
+            label2.Location = new Point(116, 246);
             label2.Name = "label2";
             label2.Size = new Size(144, 28);
             label2.TabIndex = 3;
@@ -90,17 +91,18 @@
             // txtPhone
             // 
             txtPhone.Font = new Font("Segoe UI", 12F);
-            txtPhone.Location = new Point(285, 196);
+            txtPhone.Location = new Point(293, 243);
             txtPhone.MaxLength = 11;
             txtPhone.Name = "txtPhone";
             txtPhone.Size = new Size(250, 34);
             txtPhone.TabIndex = 4;
+            txtPhone.KeyPress += txtPhone_KeyPress;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(108, 253);
+            label3.Location = new Point(116, 284);
             label3.Name = "label3";
             label3.Size = new Size(93, 28);
             label3.TabIndex = 5;
@@ -109,7 +111,7 @@
             // txtPassword
             // 
             txtPassword.Font = new Font("Segoe UI", 12F);
-            txtPassword.Location = new Point(285, 262);
+            txtPassword.Location = new Point(293, 284);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(250, 34);
             txtPassword.TabIndex = 6;
@@ -119,7 +121,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(108, 314);
+            label4.Location = new Point(116, 327);
             label4.Name = "label4";
             label4.Size = new Size(168, 28);
             label4.TabIndex = 7;
@@ -128,7 +130,7 @@
             // txtConfirmPassword
             // 
             txtConfirmPassword.Font = new Font("Segoe UI", 12F);
-            txtConfirmPassword.Location = new Point(285, 314);
+            txtConfirmPassword.Location = new Point(293, 327);
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.Size = new Size(250, 34);
             txtConfirmPassword.TabIndex = 8;
@@ -138,7 +140,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(642, 165);
+            label5.Location = new Point(651, 209);
             label5.Name = "label5";
             label5.Size = new Size(76, 28);
             label5.TabIndex = 9;
@@ -149,7 +151,7 @@
             cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbGender.FormattingEnabled = true;
             cmbGender.Items.AddRange(new object[] { "Male", "Female" });
-            cmbGender.Location = new Point(642, 196);
+            cmbGender.Location = new Point(651, 240);
             cmbGender.Name = "cmbGender";
             cmbGender.Size = new Size(200, 28);
             cmbGender.TabIndex = 10;
@@ -158,7 +160,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(642, 268);
+            label6.Location = new Point(651, 274);
             label6.Name = "label6";
             label6.Size = new Size(99, 28);
             label6.TabIndex = 11;
@@ -167,7 +169,7 @@
             // dtBirthDate
             // 
             dtBirthDate.Format = DateTimePickerFormat.Short;
-            dtBirthDate.Location = new Point(642, 299);
+            dtBirthDate.Location = new Point(651, 305);
             dtBirthDate.Name = "dtBirthDate";
             dtBirthDate.Size = new Size(200, 27);
             dtBirthDate.TabIndex = 12;
@@ -178,7 +180,7 @@
             btnCreate.FlatStyle = FlatStyle.Flat;
             btnCreate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreate.ForeColor = Color.White;
-            btnCreate.Location = new Point(336, 390);
+            btnCreate.Location = new Point(293, 387);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(250, 45);
             btnCreate.TabIndex = 13;
@@ -189,7 +191,7 @@
             // btnBack
             // 
             btnBack.Font = new Font("Segoe UI", 10F);
-            btnBack.Location = new Point(336, 455);
+            btnBack.Location = new Point(630, 361);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(250, 35);
             btnBack.TabIndex = 14;
@@ -203,7 +205,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(773, 504);
+            btnExit.Location = new Point(700, 406);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(97, 37);
             btnExit.TabIndex = 15;
@@ -217,7 +219,7 @@
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
             pictureBox1.Image = Properties.Resources.logo_wallet;
-            pictureBox1.Location = new Point(29, 314);
+            pictureBox1.Location = new Point(12, -4);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(236, 241);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -229,7 +231,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(882, 553);
+            ClientSize = new Size(982, 453);
             Controls.Add(btnExit);
             Controls.Add(btnBack);
             Controls.Add(btnCreate);

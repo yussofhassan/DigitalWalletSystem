@@ -12,9 +12,7 @@ namespace welllet.Forms
 {
     public partial class TransactionsForm : Form
     {
-        public string UserName;
-        public decimal Balance;
-        public int UserID;
+       
         public TransactionsForm()
         {
             InitializeComponent();
@@ -22,9 +20,9 @@ namespace welllet.Forms
 
         private void TransactionsForm_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = "Welcome, " + UserName;
+            lblWelcome.Text = "Welcome, " + Session.UserName;
 
-            lblBalance.Text = "Balance: " + Balance + " EGP";
+            lblBalance.Text = "Balance: " + Session.Balance + " EGP";
 
             try
             {
@@ -34,44 +32,72 @@ namespace welllet.Forms
 
                 con.Open();
                 string query =
-                    @"SELECT
+ @"SELECT
 
-    CASE
+CASE
 
-        WHEN TransactionType = 'Add Money'
-        THEN 'Added'
+    WHEN T.TransactionType = 'Add Money'
+    THEN 'Added'
 
-        WHEN SenderID = @UserID
-        THEN 'Sent'
+    WHEN T.SenderID = @UserID
+    THEN 'Sent'
 
-        WHEN ReceiverID = @UserID
-        THEN 'Received'
+    WHEN T.ReceiverID = @UserID
+    THEN 'Received'
 
-    END
-    AS TransactionStatus,
+END AS TransactionStatus,
 
-    Amount,
+CASE
 
-    TransactionDate
+    WHEN T.TransactionType = 'Add Money'
+    THEN '---'
 
-    FROM Transactions
+    WHEN T.SenderID = @UserID
+    THEN ReceiverUser.PhoneNumber
 
-    WHERE SenderID = @UserID
-    OR ReceiverID = @UserID
+    WHEN T.ReceiverID = @UserID
+    THEN SenderUser.PhoneNumber
 
-    ORDER BY TransactionDate DESC";
+END AS OtherParty,
+
+T.Amount,
+
+T.TransactionDate
+
+FROM Transactions T
+
+LEFT JOIN Users SenderUser
+ON T.SenderID = SenderUser.UserID
+
+LEFT JOIN Users ReceiverUser
+ON T.ReceiverID = ReceiverUser.UserID
+
+WHERE T.SenderID = @UserID
+OR T.ReceiverID = @UserID
+
+ORDER BY T.TransactionDate DESC";
 
                 SqlCommand cmd = new SqlCommand(query, con);
 
-                cmd.Parameters.AddWithValue("@UserID", UserID);
+                cmd.Parameters.AddWithValue("@UserID", Session.UserID);
 
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
                 DataTable dt = new DataTable();
 
                 adapter.Fill(dt);
-
                 dgvTransactions.DataSource = dt;
+
+                dgvTransactions.Columns["TransactionStatus"].HeaderText = "Type";
+
+                dgvTransactions.Columns["OtherParty"].HeaderText = "Other Party";
+
+                dgvTransactions.Columns["Amount"].HeaderText = "Amount";
+
+                dgvTransactions.Columns["TransactionDate"].HeaderText = "Date";
+               
+
+                
                 dgvTransactions.AutoSizeColumnsMode =
     DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -120,15 +146,9 @@ namespace welllet.Forms
         {
             DashboardForm dashboard = new DashboardForm();
 
-            dashboard.UserName = UserName;
-
-            dashboard.Balance = Balance;
-
-            dashboard.UserID = UserID;
-
             dashboard.Show();
 
-            this.Close();
+            this.Hide();
         }
     }
 }

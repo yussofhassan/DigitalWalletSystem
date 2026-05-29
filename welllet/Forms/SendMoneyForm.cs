@@ -15,9 +15,7 @@ namespace welllet.Forms
 {
     public partial class SendMoneyForm : Form
     {
-        public string UserName;
-        public decimal Balance;
-        public int UserID;
+
         public SendMoneyForm()
         {
             InitializeComponent();
@@ -32,11 +30,7 @@ namespace welllet.Forms
         {
             DashboardForm dashboard = new DashboardForm();
 
-            dashboard.UserName = UserName;
 
-            dashboard.Balance = Balance;
-
-            dashboard.UserID = UserID;
 
             dashboard.Show();
 
@@ -45,32 +39,45 @@ namespace welllet.Forms
 
         private void SendMoneyForm_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = "Welcome, " + UserName;
+            lblWelcome.Text = "Welcome, " + Session.UserName;
 
-            lblBalance.Text = "Balance: " + Balance + " EGP";
+            lblBalance.Text = "Balance: " + Session.Balance + " EGP";
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
+            SqlTransaction transaction = null;
             try
             {
-                if (txtReceiver.Text.Trim() == "")
+                if (Validator.IsEmpty(txtReceiver.Text))
                 {
                     MessageBox.Show("Enter receiver phone");
                     return;
                 }
 
-                if (txtAmount.Text.Trim() == "")
+                if (Validator.IsEmpty(txtAmount.Text))
                 {
                     MessageBox.Show("Enter amount");
                     return;
                 }
 
-                decimal amount = Convert.ToDecimal(txtAmount.Text);
-
-                if (amount <= 0)
+                if (!Validator.IsValidPhone(txtReceiver.Text))
                 {
-                    MessageBox.Show("Amount must be greater than 0");
+                    MessageBox.Show("Invalid Egyptian phone number");
+                    return;
+                }
+
+                decimal amount;
+
+                if (!decimal.TryParse(txtAmount.Text, out amount))
+                {
+                    MessageBox.Show("Enter a valid amount");
+                    return;
+                }
+
+                if (!Validator.IsValidAmount(amount))
+                {
+                    MessageBox.Show("Amount must be greater than zero");
                     return;
                 }
 
@@ -79,14 +86,15 @@ namespace welllet.Forms
                 SqlConnection con = db.GetConnection();
 
                 con.Open();
+                transaction = con.BeginTransaction();
 
-                // التأكد إن الرقم موجود
+
                 string checkQuery =
                     @"SELECT * FROM Users
           WHERE PhoneNumber = @Phone";
 
-                SqlCommand checkCmd = new SqlCommand(checkQuery, con);
-
+                SqlCommand checkCmd =
+                    new SqlCommand(checkQuery, con, transaction);
                 checkCmd.Parameters.AddWithValue("@Phone", txtReceiver.Text);
 
                 SqlDataReader reader = checkCmd.ExecuteReader();
@@ -101,11 +109,7 @@ namespace welllet.Forms
                 }
 
                 int receiverID = Convert.ToInt32(reader["UserID"]);
-
-                reader.Close();
-
-                // منع التحويل لنفس الشخص
-                if (receiverID == UserID)
+                if (txtReceiver.Text == Session.UserPhone)
                 {
                     MessageBox.Show("You cannot send money to yourself");
 
@@ -113,9 +117,11 @@ namespace welllet.Forms
 
                     return;
                 }
+                reader.Close();
 
-                // التأكد من الرصيد
-                if (amount > Balance)
+
+
+                if (amount > Session.Balance)
                 {
                     MessageBox.Show("Insufficient balance");
 
@@ -124,28 +130,28 @@ namespace welllet.Forms
                     return;
                 }
 
-                // خصم من المرسل
+
                 string senderQuery =
                     @"UPDATE Users
           SET Balance = Balance - @Amount
           WHERE UserID = @UserID";
 
-                SqlCommand senderCmd = new SqlCommand(senderQuery, con);
-
+                SqlCommand senderCmd =
+                    new SqlCommand(senderQuery, con, transaction);
                 senderCmd.Parameters.AddWithValue("@Amount", amount);
 
-                senderCmd.Parameters.AddWithValue("@UserID", UserID);
+                senderCmd.Parameters.AddWithValue("@UserID", Session.UserID);
 
                 senderCmd.ExecuteNonQuery();
 
-                // إضافة للمستقبل
+
                 string receiverQuery =
                     @"UPDATE Users
           SET Balance = Balance + @Amount
           WHERE UserID = @ReceiverID";
 
-                SqlCommand receiverCmd = new SqlCommand(receiverQuery, con);
-
+                SqlCommand receiverCmd =
+                    new SqlCommand(receiverQuery, con, transaction);
                 receiverCmd.Parameters.AddWithValue("@Amount", amount);
 
                 receiverCmd.Parameters.AddWithValue("@ReceiverID", receiverID);
@@ -157,22 +163,21 @@ namespace welllet.Forms
 
       VALUES
       (@SenderID, @ReceiverID, @Amount, 'Send Money', GETDATE())";
-
                 SqlCommand transactionCmd =
-                    new SqlCommand(transactionQuery, con);
-
-                transactionCmd.Parameters.AddWithValue("@SenderID", UserID);
+    new SqlCommand(transactionQuery, con, transaction);
+                transactionCmd.Parameters.AddWithValue("@SenderID", Session.UserID);
 
                 transactionCmd.Parameters.AddWithValue("@ReceiverID", receiverID);
 
                 transactionCmd.Parameters.AddWithValue("@Amount", amount);
 
                 transactionCmd.ExecuteNonQuery();
+                transaction.Commit();
 
-                // تحديث الرصيد داخل الفورم
-                Balance -= amount;
 
-                lblBalance.Text = "Balance: " + Balance + " EGP";
+                Session.Balance -= amount;
+
+                lblBalance.Text = "Balance: " + Session.Balance + " EGP";
 
                 MessageBox.Show("Money Sent Successfully");
 
@@ -184,7 +189,35 @@ namespace welllet.Forms
             }
             catch (Exception ex)
             {
+                if (transaction != null)
+                {
+                    transaction.Rollback();
+                }
+
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+       !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtReceiver_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtReceiver_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+        !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }

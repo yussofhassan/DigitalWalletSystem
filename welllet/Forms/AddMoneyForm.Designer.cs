@@ -49,7 +49,7 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(882, 100);
+            panelTop.Size = new Size(982, 100);
             panelTop.TabIndex = 1;
             // 
             // lblBalance
@@ -57,7 +57,7 @@
             lblBalance.AutoSize = true;
             lblBalance.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblBalance.ForeColor = Color.White;
-            lblBalance.Location = new Point(597, 30);
+            lblBalance.Location = new Point(589, 33);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(210, 38);
             lblBalance.TabIndex = 1;
@@ -78,7 +78,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F);
-            label1.Location = new Point(320, 185);
+            label1.Location = new Point(43, 158);
             label1.Name = "label1";
             label1.Size = new Size(174, 32);
             label1.TabIndex = 2;
@@ -87,18 +87,19 @@
             // txtAmount
             // 
             txtAmount.Font = new Font("Segoe UI", 14F);
-            txtAmount.Location = new Point(320, 220);
+            txtAmount.Location = new Point(223, 158);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(250, 39);
+            txtAmount.Size = new Size(264, 39);
             txtAmount.TabIndex = 3;
+            txtAmount.KeyPress += txtAmount_KeyPress;
             // 
             // btnConfirm
             // 
             btnConfirm.BackColor = Color.DarkBlue;
             btnConfirm.ForeColor = Color.White;
-            btnConfirm.Location = new Point(320, 280);
+            btnConfirm.Location = new Point(223, 212);
             btnConfirm.Name = "btnConfirm";
-            btnConfirm.Size = new Size(250, 60);
+            btnConfirm.Size = new Size(264, 60);
             btnConfirm.TabIndex = 4;
             btnConfirm.Text = "Confirm Add";
             btnConfirm.UseVisualStyleBackColor = false;
@@ -110,7 +111,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(741, 389);
+            btnExit.Location = new Point(358, 304);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(129, 52);
             btnExit.TabIndex = 17;
@@ -124,7 +125,7 @@
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(12, 389);
+            btnBack.Location = new Point(223, 304);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(129, 52);
             btnBack.TabIndex = 18;
@@ -138,9 +139,9 @@
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
             pictureBox1.Image = Properties.Resources.logo_wallet;
-            pictureBox1.Location = new Point(560, 57);
+            pictureBox1.Location = new Point(519, 106);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(342, 306);
+            pictureBox1.Size = new Size(426, 355);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 26;
             pictureBox1.TabStop = false;
@@ -150,7 +151,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(882, 453);
+            ClientSize = new Size(982, 453);
             Controls.Add(btnBack);
             Controls.Add(btnExit);
             Controls.Add(btnConfirm);

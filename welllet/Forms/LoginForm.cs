@@ -23,25 +23,19 @@ namespace welllet
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtPhone.Text.Trim() == "")
+            if (Validator.IsEmpty(txtPhone.Text))
             {
                 MessageBox.Show("Please enter phone number");
                 return;
             }
 
-            if (txtPassword.Text.Trim() == "")
+            if (Validator.IsEmpty(txtPassword.Text))
             {
                 MessageBox.Show("Please enter password");
                 return;
             }
 
-            if (txtPhone.Text.Length != 11)
-            {
-                MessageBox.Show("Phone number must be 11 digits");
-                return;
-            }
-
-            if (!txtPhone.Text.StartsWith("01"))
+            if (!Validator.IsValidPhone(txtPhone.Text))
             {
                 MessageBox.Show("Invalid Egyptian phone number");
                 return;
@@ -76,10 +70,21 @@ namespace welllet
                     MessageBox.Show("Login Success");
                     DashboardForm dashboard = new DashboardForm();
 
-                    dashboard.UserName = reader["FullName"].ToString();
 
-                    dashboard.Balance = Convert.ToDecimal(reader["Balance"]);
-                    dashboard.UserID = Convert.ToInt32(reader["UserID"]);
+
+                    Session.UserName = reader["FullName"].ToString();
+
+                    Session.UserPhone =
+    reader["PhoneNumber"].ToString();
+
+                    Session.Balance = Convert.ToDecimal(reader["Balance"]);
+
+                    Session.UserID = Convert.ToInt32(reader["UserID"]);
+                    reader.Close();
+
+                    txtPhone.Clear();
+
+                    txtPassword.Clear();
 
                     dashboard.Show();
 
@@ -111,6 +116,20 @@ namespace welllet
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+        !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

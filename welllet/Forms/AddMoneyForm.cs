@@ -12,9 +12,7 @@ namespace welllet.Forms
 {
     public partial class AddMoneyForm : Form
     {
-        public string UserName;
-        public decimal Balance;
-        public int UserID;
+
         public AddMoneyForm()
         {
             InitializeComponent();
@@ -22,28 +20,33 @@ namespace welllet.Forms
 
         private void AddMoneyForm_Load(object sender, EventArgs e)
         {
-            lblWelcome.Text = "Welcome, " + UserName;
+            lblWelcome.Text = "Welcome, " + Session.UserName;
 
-            lblBalance.Text = "Balance: " + Balance + " EGP";
+            lblBalance.Text = "Balance: " + Session.Balance + " EGP";
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             try
             {
-                if (txtAmount.Text.Trim() == "")
+                if (Validator.IsEmpty(txtAmount.Text))
                 {
                     MessageBox.Show("Please enter amount");
                     return;
                 }
+                decimal amount;
 
-                decimal amount = Convert.ToDecimal(txtAmount.Text);
-
-                if (amount <= 0)
+                if (!decimal.TryParse(txtAmount.Text, out amount))
                 {
-                    MessageBox.Show("Amount must be greater than 0");
+                    MessageBox.Show("Enter a valid amount");
                     return;
                 }
+                if (!Validator.IsValidAmount(amount))
+                {
+                    MessageBox.Show("Amount must be greater than zero");
+                    return;
+                }
+
 
                 DatabaseManager db = new DatabaseManager();
 
@@ -60,8 +63,7 @@ namespace welllet.Forms
 
                 cmd.Parameters.AddWithValue("@Amount", amount);
 
-                cmd.Parameters.AddWithValue("@UserID", UserID);
-
+                cmd.Parameters.AddWithValue("@UserID", Session.UserID);
                 cmd.ExecuteNonQuery();
                 string transactionQuery =
     @"INSERT INTO Transactions
@@ -73,16 +75,15 @@ namespace welllet.Forms
                 SqlCommand transactionCmd =
                     new SqlCommand(transactionQuery, con);
 
-                transactionCmd.Parameters.AddWithValue("@ReceiverID", UserID);
-
+                transactionCmd.Parameters.AddWithValue("@ReceiverID", Session.UserID);
                 transactionCmd.Parameters.AddWithValue("@Amount", amount);
 
                 transactionCmd.ExecuteNonQuery();
 
-                Balance += amount;
+                Session.Balance += amount;
 
-                lblBalance.Text = "Balance: " + Balance + " EGP";
-
+                lblBalance.Text =
+                    $"Balance: {Session.Balance} EGP";
                 MessageBox.Show("Money Added Successfully");
 
                 txtAmount.Clear();
@@ -104,15 +105,20 @@ namespace welllet.Forms
         {
             DashboardForm dashboard = new DashboardForm();
 
-            dashboard.UserName = UserName;
 
-            dashboard.Balance = Balance;
-
-            dashboard.UserID = UserID;
 
             dashboard.Show();
 
-            this.Close();
+            this.Hide();
+        }
+
+        private void txtAmount_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) &&
+       !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

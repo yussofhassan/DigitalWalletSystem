@@ -43,6 +43,7 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panelTop.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13F);
-            label1.Location = new Point(161, 135);
+            label1.Location = new Point(70, 38);
             label1.Name = "label1";
             label1.Size = new Size(187, 30);
             label1.TabIndex = 0;
@@ -58,7 +59,7 @@
             // 
             // txtCurrentPassword
             // 
-            txtCurrentPassword.Location = new Point(354, 140);
+            txtCurrentPassword.Location = new Point(263, 41);
             txtCurrentPassword.Name = "txtCurrentPassword";
             txtCurrentPassword.Size = new Size(280, 27);
             txtCurrentPassword.TabIndex = 1;
@@ -78,7 +79,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13F);
-            label3.Location = new Point(106, 250);
+            label3.Location = new Point(15, 98);
             label3.Name = "label3";
             label3.Size = new Size(242, 30);
             label3.TabIndex = 4;
@@ -86,7 +87,7 @@
             // 
             // txtConfirmPassword
             // 
-            txtConfirmPassword.Location = new Point(354, 194);
+            txtConfirmPassword.Location = new Point(263, 73);
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.Size = new Size(280, 27);
             txtConfirmPassword.TabIndex = 5;
@@ -168,7 +169,7 @@
             // 
             // txtNewPassword
             // 
-            txtNewPassword.Location = new Point(354, 253);
+            txtNewPassword.Location = new Point(263, 106);
             txtNewPassword.Name = "txtNewPassword";
             txtNewPassword.Size = new Size(280, 27);
             txtNewPassword.TabIndex = 23;
@@ -176,6 +177,11 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(txtNewPassword);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(txtCurrentPassword);
+            panel1.Controls.Add(txtConfirmPassword);
+            panel1.Controls.Add(label3);
             panel1.Location = new Point(91, 121);
             panel1.Name = "panel1";
             panel1.Size = new Size(608, 176);
@@ -201,16 +207,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(982, 453);
-            Controls.Add(txtNewPassword);
             Controls.Add(btnBack);
             Controls.Add(btnExit);
             Controls.Add(panelTop);
             Controls.Add(btnChangePassword);
-            Controls.Add(txtConfirmPassword);
-            Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(txtCurrentPassword);
-            Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -221,6 +222,8 @@
             Load += ChangePasswordForm_Load;
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

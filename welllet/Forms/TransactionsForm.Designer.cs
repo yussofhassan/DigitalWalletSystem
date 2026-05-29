@@ -48,7 +48,7 @@
             panelTop.Dock = DockStyle.Top;
             panelTop.Location = new Point(0, 0);
             panelTop.Name = "panelTop";
-            panelTop.Size = new Size(882, 100);
+            panelTop.Size = new Size(982, 100);
             panelTop.TabIndex = 1;
             // 
             // lblBalance
@@ -79,7 +79,7 @@
             dgvTransactions.Location = new Point(0, 106);
             dgvTransactions.Name = "dgvTransactions";
             dgvTransactions.RowHeadersWidth = 51;
-            dgvTransactions.Size = new Size(882, 247);
+            dgvTransactions.Size = new Size(982, 247);
             dgvTransactions.TabIndex = 2;
             // 
             // btnBack
@@ -88,7 +88,7 @@
             btnBack.FlatStyle = FlatStyle.Flat;
             btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBack.ForeColor = Color.White;
-            btnBack.Location = new Point(12, 389);
+            btnBack.Location = new Point(414, 389);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(129, 52);
             btnBack.TabIndex = 22;
@@ -102,7 +102,7 @@
             btnExit.FlatStyle = FlatStyle.Flat;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = Color.White;
-            btnExit.Location = new Point(741, 389);
+            btnExit.Location = new Point(586, 389);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(129, 52);
             btnExit.TabIndex = 21;
@@ -116,9 +116,9 @@
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
             pictureBox1.ErrorImage = Properties.Resources.logo_wallet;
             pictureBox1.Image = Properties.Resources.logo_wallet;
-            pictureBox1.Location = new Point(233, 199);
+            pictureBox1.Location = new Point(30, 328);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(342, 306);
+            pictureBox1.Size = new Size(218, 159);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 26;
             pictureBox1.TabStop = false;
@@ -128,7 +128,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(882, 453);
+            ClientSize = new Size(982, 453);
             Controls.Add(btnBack);
             Controls.Add(btnExit);
             Controls.Add(dgvTransactions);
