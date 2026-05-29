@@ -1,40 +1,10 @@
-﻿# Digital Wallet System
+# Digital Wallet System
 
 A desktop wallet application built using C#, WinForms and SQL Server.
 
-## Screenshots
+## Project Overview
 
-### Login Form
-
-![Login Form](wellet/Screenshots/LoginForm.png)
-
-### Registration Form
-
-![Registration Form](wellet/Screenshots/RegistrationForm.png)
-
-### Dashboard
-
-![Dashboard](wellet/Screenshots/dashboard.png)
-
-### Add Money
-
-![Add Money](wellet/Screenshots/AddForm.png)
-
-### Send Money
-
-![Send Money](wellet/Screenshots/SendingForm.png)
-
-### Change Password
-
-![Change Password](wellet/Screenshots/ChangePasswordForm.png)
-
-### Transactions
-
-![Transactions](wellet/Screenshots/transactions.png)
-
----
-
-## Features
+This project implements a simple Digital Wallet System with the following features:
 
 - User Registration
 - User Login
@@ -44,9 +14,13 @@ A desktop wallet application built using C#, WinForms and SQL Server.
 - Change Password
 - Transaction History
 - Input Validation
-- SQL Transactions (Commit / Rollback)
+- SQL Transactions
 
----
+## Full Documentation
+
+📖 For screenshots, project structure, setup instructions and detailed documentation:
+
+➡️ [Open Full Project Documentation](welllet/README.md)
 
 ## Technologies Used
 
@@ -56,25 +30,8 @@ A desktop wallet application built using C#, WinForms and SQL Server.
 - ADO.NET
 - Git & GitHub
 
----
+## Release
 
-## Database Setup
+Current stable version:
 
-1. Open SQL Server LocalDB.
-2. Run `database.sql`.
-3. Start the application.
-
----
-
-## Project Structure
-
-- Forms
-- Classes
-- Database
-- Resources
-
----
-
-## Author
-
-Yussof Hassan Mahmoud
+**v1.0**
